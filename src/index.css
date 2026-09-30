@@ -18,7 +18,7 @@
   --color-border: rgba(255, 255, 255, 0.18);
   --color-border-strong: rgba(255, 255, 255, 0.4);
   
-  --font-cursive: 'Dancing Script', cursive;
+  --font-handwritten: 'Kaushan Script', 'Caveat', cursive;
   --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
   --font-display: 'Syne', sans-serif;
   --font-mono: 'Space Mono', monospace;
@@ -364,23 +364,24 @@ button {
   color: rgba(255, 255, 255, 0.95);
 }
 
-/* COMMANDING HERO NAME: Ultra-bold high-weight modern typography */
+/* COMMANDING HERO NAME: Hand-written signature typography */
 .hero-commanding-name {
-  font-family: var(--font-sans);
-  font-size: clamp(4.2rem, 7.5vw, 6.2rem);
-  font-weight: 800;
-  line-height: 0.98;
-  letter-spacing: -0.035em;
+  font-family: var(--font-handwritten);
+  font-size: clamp(4.6rem, 8vw, 6.6rem);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.01em;
   color: var(--color-white);
-  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
-  margin: 6px 0 16px;
+  text-shadow: 0 8px 28px rgba(0, 0, 0, 0.42), 0 2px 8px rgba(0, 0, 0, 0.3);
+  margin: 0 0 14px;
   user-select: none;
   cursor: default;
   transition: transform 0.3s var(--ease-luxury);
+  display: inline-block;
 }
 
 .hero-commanding-name:hover {
-  transform: scale(1.015) translateX(2px);
+  transform: scale(1.025) rotate(-0.5deg);
 }
 
 .hero-compact-bio {
