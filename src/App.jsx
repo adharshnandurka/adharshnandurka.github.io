@@ -33,7 +33,7 @@ export default function App() {
         target.closest('a') ||
         target.closest('button') ||
         target.closest('.interactive') ||
-        target.closest('.hero-cursive-name')
+        target.closest('.hero-commanding-name')
       ) {
         setIsHovered(true);
       } else {

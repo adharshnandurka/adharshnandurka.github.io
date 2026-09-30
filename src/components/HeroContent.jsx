@@ -1,47 +1,150 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function HeroContent() {
+  const [emailCopied, setEmailCopied] = useState(false);
+
+  const handleCopyEmail = (e) => {
+    // If user clicks with shift or right click, standard link, else copy
+    if (e.metaKey || e.ctrlKey) return;
+    navigator.clipboard.writeText('nandurkaadharsh@gmail.com');
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2200);
+  };
+
   return (
     <div className="hero-overlay" role="region" aria-label="Hero Section">
-      {/* BOTTOM-LEFT: HERO TYPOGRAPHY & CTAs */}
+      {/* Soft ambient scrim behind hero card for 100% legibility across all character motion */}
+      <div className="hero-content-scrim" aria-hidden="true" />
+
+      {/* Hero Content Card */}
       <div className="hero-bottom-left">
-        <div className="hero-intro-text">Hi, I'm</div>
-        
-        {/* Large, elegant cursive script with soft drop shadow */}
-        <h1
-          className="hero-cursive-name"
-          aria-label="Adharsh"
-        >
+        {/* Eyebrow & Salutation */}
+        <div className="hero-salutation-row">
+          <span className="hero-lead-text">Hi, I am</span>
+          <div className="hero-status-badge">
+            <span className="hero-status-pulse" />
+            <span className="hero-status-text">Azure Cloud • GET L1</span>
+          </div>
+        </div>
+
+        {/* Hero Name: High font-weight, high font-size commanding presence */}
+        <h1 className="hero-commanding-name" aria-label="Adharsh">
           Adharsh
         </h1>
 
-        {/* Compact bio: Graduate Engineer Trainee – Level L1 */}
+        {/* Short Bio description */}
         <p className="hero-compact-bio">
           I am currently working as a Graduate Engineer Trainee – Level L1, specializing in Microsoft Azure Cloud. I joined the organization three months ago and am currently undergoing structured training in Azure Administration.
         </p>
 
-        {/* Two stylish white pill buttons: Resume (solid with arrow) and Let's Talk (frosted glass) */}
-        <div className="hero-button-row">
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" className="btn-resume-solid">
-            Resume
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        {/* Interactive Action Hub: 2 CTA Buttons + Social Media Links */}
+        <div className="hero-action-hub">
+          {/* Two prominent Call-To-Action buttons */}
+          <div className="hero-button-row">
+            <a
+              href="/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-resume-solid"
+              id="hero-cta-resume"
             >
-              <line x1="7" y1="17" x2="17" y2="7" />
-              <polyline points="7 7 17 7 17 17" />
-            </svg>
-          </a>
+              <span>Resume</span>
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="btn-arrow-icon"
+              >
+                <line x1="7" y1="17" x2="17" y2="7" />
+                <polyline points="7 7 17 7 17 17" />
+              </svg>
+            </a>
 
-          <a href="#contact" className="btn-talk-frosted">
-            Let's Talk
-          </a>
+            <a
+              href="#contact"
+              className="btn-talk-frosted"
+              id="hero-cta-talk"
+            >
+              <span>Let's Talk</span>
+              <svg
+                width="13"
+                height="13"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="btn-chat-icon"
+              >
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+              </svg>
+            </a>
+          </div>
+
+          {/* Social Icons Dock: GitHub, LinkedIn, Email, Phone */}
+          <div className="hero-social-dock" role="navigation" aria-label="Social Links">
+            <a
+              href="https://github.com/adharshnandurka"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-social-pill"
+              aria-label="GitHub Profile (opens in new tab)"
+              title="GitHub: adharshnandurka"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+              </svg>
+              <span className="social-pill-tooltip">GitHub</span>
+            </a>
+
+            <a
+              href="https://linkedin.com/in/your-profile"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-social-pill"
+              aria-label="LinkedIn Profile (opens in new tab)"
+              title="LinkedIn Profile"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+              </svg>
+              <span className="social-pill-tooltip">LinkedIn</span>
+            </a>
+
+            <a
+              href="mailto:nandurkaadharsh@gmail.com"
+              onClick={handleCopyEmail}
+              className="hero-social-pill email-pill"
+              aria-label="Email Adharsh"
+              title={emailCopied ? "Email copied!" : "Click to copy email / mailto"}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2" />
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
+              </svg>
+              <span className="social-pill-tooltip">
+                {emailCopied ? "Copied! ✓" : "Email"}
+              </span>
+            </a>
+
+            <a
+              href="tel:+916303163276"
+              className="hero-social-pill phone-pill"
+              aria-label="Call Adharsh"
+              title="Phone: +91 6303163276"
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+              <span className="social-pill-tooltip">Call</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>

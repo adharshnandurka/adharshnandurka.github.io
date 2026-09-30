@@ -273,62 +273,114 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 0 5vw 44px;
+  padding: 0 5vw 48px;
+}
+
+/* Soft ambient scrim behind hero card for 100% legibility across all character motion */
+.hero-content-scrim {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 58vw;
+  height: 65vh;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at bottom left,
+    rgba(18, 2, 2, 0.48) 0%,
+    rgba(216, 31, 21, 0.18) 50%,
+    transparent 75%
+  );
+  z-index: 35;
 }
 
 .hero-bottom-left {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  max-width: 640px;
+  max-width: 620px;
   pointer-events: auto;
   z-index: 40;
+  position: relative;
 }
 
-.hero-intro-text {
+.hero-salutation-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 4px;
+  flex-wrap: wrap;
+}
+
+.hero-lead-text {
   font-family: var(--font-sans);
-  font-size: 1.15rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 1.25rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.9);
-  margin-bottom: 2px;
+  color: rgba(255, 255, 255, 0.85);
 }
 
-.hero-cursive-name {
-  font-family: var(--font-cursive);
-  font-size: clamp(3.8rem, 7.8vw, 6.4rem);
-  font-weight: 700;
-  line-height: 1.05;
-  color: var(--color-white);
-  text-shadow: 0 6px 24px rgba(0, 0, 0, 0.38);
-  margin-bottom: 12px;
-  user-select: none;
-  cursor: pointer;
-  transition: transform 0.25s var(--ease-luxury);
-}
-
-.hero-cursive-name:hover {
-  transform: scale(1.02);
-}
-
-.name-toggle-badge {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  color: var(--color-sand);
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+.hero-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 4px 11px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
   border-radius: 999px;
-  padding: 4px 10px;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  backdrop-filter: blur(8px);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
 }
 
-.name-toggle-badge:hover {
-  background: rgba(255, 255, 255, 0.22);
+.hero-status-pulse {
+  width: 6.5px;
+  height: 6.5px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 10px #22c55e;
+  animation: pulseGreen 2.2s infinite ease-in-out;
+}
+
+@keyframes pulseGreen {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 10px #22c55e;
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.85);
+    box-shadow: 0 0 4px #22c55e;
+  }
+}
+
+.hero-status-text {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+/* COMMANDING HERO NAME: Ultra-bold high-weight modern typography */
+.hero-commanding-name {
+  font-family: var(--font-sans);
+  font-size: clamp(4.2rem, 7.5vw, 6.2rem);
+  font-weight: 800;
+  line-height: 0.98;
+  letter-spacing: -0.035em;
   color: var(--color-white);
+  text-shadow: 0 8px 32px rgba(0, 0, 0, 0.45), 0 2px 6px rgba(0, 0, 0, 0.3);
+  margin: 6px 0 16px;
+  user-select: none;
+  cursor: default;
+  transition: transform 0.3s var(--ease-luxury);
+}
+
+.hero-commanding-name:hover {
+  transform: scale(1.015) translateX(2px);
 }
 
 .hero-compact-bio {
@@ -336,72 +388,155 @@ button {
   font-size: 0.98rem;
   font-weight: 400;
   line-height: 1.65;
-  color: rgba(255, 255, 255, 0.9);
-  max-width: 540px; /* Formats cleanly into exactly 3 lines */
-  margin-bottom: 26px;
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  color: rgba(255, 255, 255, 0.92);
+  max-width: 480px;
+  margin-bottom: 24px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
 }
 
 /* --------------------------------------------------------------------------
-   TWO STYLISH WHITE PILL BUTTONS (Resume & Let's Talk)
+   HERO ACTION HUB (2 CTA BUTTONS + SOCIAL ICONS DOCK)
    -------------------------------------------------------------------------- */
-.hero-button-row {
+.hero-action-hub {
   display: flex;
   align-items: center;
   gap: 14px;
+  flex-wrap: wrap;
+}
+
+.hero-button-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
 
 .btn-resume-solid {
   display: inline-flex;
   align-items: center;
   gap: 10px;
-  padding: 13px 26px;
+  padding: 13px 28px;
   background-color: var(--color-white);
   color: var(--color-obsidian);
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.03em;
   border-radius: 999px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24), 0 1px 3px rgba(255, 255, 255, 0.8) inset;
   transition: transform 0.3s var(--ease-luxury), box-shadow 0.3s var(--ease-luxury), background-color 0.25s ease;
 }
 
 .btn-resume-solid:hover {
   transform: translateY(-2px) scale(1.02);
-  background-color: var(--color-cream);
-  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.32);
+  background-color: #ffffff;
+  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.36);
 }
 
-.btn-resume-solid svg {
+.btn-arrow-icon {
   transition: transform 0.3s var(--ease-luxury);
 }
 
-.btn-resume-solid:hover svg {
-  transform: translate(2px, -2px);
+.btn-resume-solid:hover .btn-arrow-icon {
+  transform: translate(2.5px, -2.5px);
 }
 
 .btn-talk-frosted {
   display: inline-flex;
   align-items: center;
+  gap: 8px;
   padding: 12px 24px;
   background: rgba(255, 255, 255, 0.12);
   color: var(--color-white);
   font-family: var(--font-sans);
-  font-size: 0.88rem;
+  font-size: 0.9rem;
   font-weight: 600;
-  letter-spacing: 0.04em;
-  border: 1.5px solid rgba(255, 255, 255, 0.45);
+  letter-spacing: 0.03em;
+  border: 1.5px solid rgba(255, 255, 255, 0.38);
   border-radius: 999px;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.16);
   transition: all 0.3s var(--ease-luxury);
 }
 
 .btn-talk-frosted:hover {
-  background: rgba(255, 255, 255, 0.22);
-  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.24);
+  border-color: rgba(255, 255, 255, 0.85);
   transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.btn-chat-icon {
+  transition: transform 0.3s var(--ease-luxury);
+}
+
+.btn-talk-frosted:hover .btn-chat-icon {
+  transform: scale(1.15);
+}
+
+/* FROSTED GLASS SOCIAL DOCK */
+.hero-social-dock {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  border-radius: 999px;
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  width: fit-content;
+}
+
+.hero-social-pill {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  color: rgba(255, 255, 255, 0.92);
+  transition: all 0.25s var(--ease-luxury);
+  cursor: pointer;
+}
+
+.hero-social-pill:hover {
+  background: var(--color-white);
+  color: var(--color-obsidian);
+  border-color: var(--color-white);
+  transform: translateY(-2.5px) scale(1.1);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+}
+
+.social-pill-tooltip {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(4px);
+  background: rgba(20, 5, 5, 0.94);
+  color: var(--color-white);
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  padding: 4px 8px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+  z-index: 50;
+}
+
+.hero-social-pill:hover .social-pill-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* --------------------------------------------------------------------------
