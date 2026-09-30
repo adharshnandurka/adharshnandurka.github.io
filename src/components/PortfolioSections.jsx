@@ -2,18 +2,11 @@ import React, { useState } from 'react';
 
 export default function PortfolioSections() {
   const [copied, setCopied] = useState(false);
-  const [copiedPhone, setCopiedPhone] = useState(false);
 
   const handleCopyEmail = () => {
     navigator.clipboard.writeText('nandurkaadharsh@gmail.com');
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
-  };
-
-  const handleCopyPhone = () => {
-    navigator.clipboard.writeText('+916303163276');
-    setCopiedPhone(true);
-    setTimeout(() => setCopiedPhone(false), 2000);
   };
 
   return (
@@ -35,7 +28,7 @@ export default function PortfolioSections() {
 
               <div className="about-highlights-row">
                 <span className="about-highlight-chip accent">
-                  <span>✦</span> Infolob Solutions • GET L1 (Grade A)
+                  <span>✦</span> Infolob Solutions
                 </span>
                 <span className="about-highlight-chip">
                   <span>☁</span> Azure Cloud &amp; AWS
@@ -49,7 +42,7 @@ export default function PortfolioSections() {
               </div>
 
               <p className="about-bio-lead">
-                I am a Cloud &amp; Infrastructure Engineer and MCA graduate (2025) from Nizam College, Osmania University, currently working as a <strong>Graduate Engineer Trainee – Level L1 (Grade A)</strong> in the Technical Department at <strong>Infolob Solutions India Pvt. Ltd.</strong> Over the past three months, I have been undergoing intensive enterprise training in Microsoft Azure Cloud administration, actively preparing for the <strong>Azure Administrator Associate (AZ-104)</strong> credential with hands-on expertise in configuring secure Virtual Networks (VNets), Network Security Groups, Application Gateways, Load Balancers, Virtual Machines, resilient Storage Accounts, and Azure App Services.
+                I am a Cloud &amp; Infrastructure Engineer and MCA graduate (2025) from Nizam College, Osmania University, currently working in the Technical Department at <strong>Infolob Solutions India Pvt. Ltd.</strong> Over the past three months, I have been undergoing intensive enterprise training in Microsoft Azure Cloud administration, actively preparing for the <strong>Azure Administrator Associate (AZ-104)</strong> credential with hands-on expertise in configuring secure Virtual Networks (VNets), Network Security Groups, Application Gateways, Load Balancers, Virtual Machines, resilient Storage Accounts, and Azure App Services.
               </p>
 
               <p className="about-bio-body">
@@ -402,29 +395,6 @@ export default function PortfolioSections() {
                     title="Copy email to clipboard"
                   >
                     {copied ? '✓ COPIED' : 'COPY'}
-                  </button>
-                </div>
-
-                {/* Phone Card */}
-                <div className="contact-card">
-                  <div className="contact-icon social-icon phone-icon">
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                  </div>
-                  <div className="contact-meta">
-                    <span className="contact-label">PHONE NUMBER</span>
-                    <a href="tel:+916303163276" className="contact-value link">
-                      +91 6303163276
-                    </a>
-                  </div>
-                  <button
-                    type="button"
-                    onClick={handleCopyPhone}
-                    className="copy-btn"
-                    title="Copy phone number to clipboard"
-                  >
-                    {copiedPhone ? '✓ COPIED' : 'COPY'}
                   </button>
                 </div>
 
